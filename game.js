@@ -122,4 +122,29 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-console.log("popup OK")
+// Gestion du clavier mobile
+
+const inputClavier = document.getElementById("clavier-mobile");
+
+if (window.innerWidth < 600) {
+  inputClavier.focus();
+
+  // Reste focus si le joueur clique à côté
+  inputClavier.addEventListener("blur", () => {
+    setTimeout(() => inputClavier.focus(), 100);
+  });
+
+  inputClavier.addEventListener("input", (e) => {
+    const lettre = e.target.value.toLowerCase();
+    e.target.value = "";
+
+    if (/^[a-z]$/.test(lettre) && !jeu.finie) {
+      const resultat = jeu.verifierLettre(lettre);
+      mettreAJourMot();
+      mettreAJourLettresRatees();
+      afficherTentativesRestantes();
+      verifierFinJeu();
+      afficherPendu(jeu.maxErreurs - jeu.tentatives);
+    }
+  });
+}
