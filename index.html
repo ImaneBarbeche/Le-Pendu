@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="pendu.js" defer></script>
+  <script src="game.js" defer></script>
+  <script src="son.js" defer></script>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <title>Jeu du Pendu</title>
+</head>
+
+<body>
+  <main id="game-container">
+    <h1>Jeu du Pendu</h1>
+
+    <section id="mot-affiche">
+      <!-- Exemple : _ _ _ _ -->
+    </section>
+
+    <section id="infos-jeu">
+      <p>Lettres utilisées : <span id="lettres-utilisees"></span></p>
+      <p><span id="tentatives-restantes"></span></p>
+    </section>
+
+    <div id="pendaison">
+      <div class="p-part barre"></div>
+      <div class="p-part corde"></div>
+      <div class="p-part tete"></div>
+      <div class="p-part corps"></div>
+      <div class="p-part bras-gauche"></div>
+      <div class="p-part bras-droit"></div>
+      <div class="p-part jambe-gauche"></div>
+      <div class="p-part jambe-droite"></div>
+    </div>
+
+    <button id="btn-musique" type="button">🔊 Musique</button>
+
+    <section id="message-fin" hidden>
+      <!-- Message de victoire ou défaite -->
+      <p id="texte-message"></p>
+      <button id="btn-rejouer" type="button">Rejouer</button>
+      <button id="btn-abandonner" type="button">Abandonner</button>
+
+    </section>
+
+    <button id="btn-regles">
+    <img src="assets/images/icon_regles.png" alt="Règles" width="24" class="icon_regles" />
+      Règles
+  </button>
+   
+
+    <div id="popup-regles" hidden>
+      <div class="popup-contenu">
+        <h2>Règles du jeu</h2>
+        <ul>
+          <li>Un mot est choisi au hasard.</li>
+          <li>Utilisez votre clavier pour deviner les lettres.</li>
+          <li>Chaque mauvaise tentative dessine le pendu.</li>
+          <li>Vous avez 8 erreurs max.</li>
+          <li>Vous gagnez si vous devinez le mot à temps !</li>
+        </ul>
+        <button id="fermer-regles">Fermer</button>
+      </div>
+    </div>
+
+<!-- 
+    <section id="choix-niveau" hidden>
+      <h2>Choisissez un niveau de difficulté :</h2>
+      <button id="btn-facile" type="button">Facile</button>
+      <button id="btn-moyen" type="button">Moyen</button>
+      <button id="btn-difficile" type="button">Difficile</button> -->
+  </main>
+
+</body>
+
+</html>
