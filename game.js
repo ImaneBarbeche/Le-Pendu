@@ -37,6 +37,23 @@ fetch("mots.json")
       afficherTentativesRestantes();
       verifierFinJeu();
       afficherPendu(jeu.maxErreurs - jeu.tentatives);
+
+      // Gestion du clavier mobile
+      const champLettre = document.getElementById("saisie-lettre");
+
+      champLettre.addEventListener("input", (e) => {
+        const lettre = e.target.value.toLowerCase();
+        champLettre.value = "";
+
+        if (/^[a-z]$/.test(lettre) && !jeu.finie) {
+          const resultat = jeu.verifierLettre(lettre);
+          mettreAJourMot();
+          mettreAJourLettresRatees();
+          afficherTentativesRestantes();
+          verifierFinJeu();
+          afficherPendu(jeu.maxErreurs - jeu.tentatives);
+        }
+      });
     });
 
     document.getElementById("btn-rejouer").addEventListener("click", () => {
@@ -56,26 +73,28 @@ fetch("mots.json")
     });
   });
 
-  function mettreAJourMot() {
-    if (!jeu) return; // ← ne fait rien si jeu est undefined
-    const motAffiche = jeu.afficherMot();
-    document.getElementById("mot-affiche").textContent = motAffiche;
-  }
-  
+function mettreAJourMot() {
+  if (!jeu) return; // ← ne fait rien si jeu est undefined
+  const motAffiche = jeu.afficherMot();
+  document.getElementById("mot-affiche").textContent = motAffiche;
+}
 
 mettreAJourMot();
 
 function mettreAJourLettresRatees() {
   if (!jeu) return;
   const lettresRatees = jeu.getLettresRatees();
-  document.getElementById("lettres-utilisees").textContent = lettresRatees.join(", ");
+  document.getElementById("lettres-utilisees").textContent =
+    lettresRatees.join(", ");
 }
 mettreAJourLettresRatees();
 
 function afficherTentativesRestantes() {
   if (!jeu) return;
   const tentatives = jeu.afficherTentatives();
-  document.getElementById("tentatives-restantes").textContent = `Tentatives restantes : ${tentatives}`;
+  document.getElementById(
+    "tentatives-restantes"
+  ).textContent = `Tentatives restantes : ${tentatives}`;
 }
 afficherTentativesRestantes();
 
@@ -121,22 +140,3 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("popup-regles").setAttribute("hidden", true);
   });
 });
-
-// Gestion du clavier mobile
-
-const champLettre = document.getElementById("saisie-lettre");
-
-champLettre.addEventListener("input", (e) => {
-  const lettre = e.target.value.toLowerCase();
-  champLettre.value = ""; // Vide le champ après chaque lettre
-
-  if (/^[a-z]$/.test(lettre) && !jeu.finie) {
-    const resultat = jeu.verifierLettre(lettre);
-    mettreAJourMot();
-    mettreAJourLettresRatees();
-    afficherTentativesRestantes();
-    verifierFinJeu();
-    afficherPendu(jeu.maxErreurs - jeu.tentatives);
-  }
-});
-
