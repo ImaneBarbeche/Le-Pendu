@@ -7,7 +7,7 @@ Un petit jeu du pendu en mode **8-bit rétro**, ambiance terminal vert, avec son
 
 ## 🔗 Démo en ligne
 
-👉 [Voir le jeu sur GitLab Pages](https://TON_UTILISATEUR.gitlab.io/NOM_DU_REPO)
+👉 Voir le jeu sur https://imanebarbeche.github.io/Le-Pendu/
 
 ---
 
@@ -25,9 +25,8 @@ Un petit jeu du pendu en mode **8-bit rétro**, ambiance terminal vert, avec son
 ## 🧰 Technologies
 
 - HTML5
-- CSS3 (custom style rétro + animations)
-- JavaScript ES6 (avec POO)
-- Aucun framework, 100% vanilla 🍦
+- CSS3
+- JavaScript
 
 ---
 
@@ -44,6 +43,5 @@ Un petit jeu du pendu en mode **8-bit rétro**, ambiance terminal vert, avec son
 ## ⚙️ Lancer le projet en local
 
 ```bash
-git clone https://gitlab.com/TON_UTILISATEUR/NOM_DU_REPO.git
-cd NOM_DU_REPO
+git clone https://github.com/ImaneBarbeche/Le-Pendu.git
 # Ouvre index.html dans ton navigateur
