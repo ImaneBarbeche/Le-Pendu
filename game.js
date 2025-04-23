@@ -124,27 +124,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Gestion du clavier mobile
 
-const inputClavier = document.getElementById("clavier-mobile");
+const champLettre = document.getElementById("saisie-lettre");
 
-if (window.innerWidth < 600) {
-  inputClavier.focus();
+champLettre.addEventListener("input", (e) => {
+  const lettre = e.target.value.toLowerCase();
+  champLettre.value = ""; // Vide le champ après chaque lettre
 
-  // Reste focus si le joueur clique à côté
-  inputClavier.addEventListener("blur", () => {
-    setTimeout(() => inputClavier.focus(), 100);
-  });
+  if (/^[a-z]$/.test(lettre) && !jeu.finie) {
+    const resultat = jeu.verifierLettre(lettre);
+    mettreAJourMot();
+    mettreAJourLettresRatees();
+    afficherTentativesRestantes();
+    verifierFinJeu();
+    afficherPendu(jeu.maxErreurs - jeu.tentatives);
+  }
+});
 
-  inputClavier.addEventListener("input", (e) => {
-    const lettre = e.target.value.toLowerCase();
-    e.target.value = "";
-
-    if (/^[a-z]$/.test(lettre) && !jeu.finie) {
-      const resultat = jeu.verifierLettre(lettre);
-      mettreAJourMot();
-      mettreAJourLettresRatees();
-      afficherTentativesRestantes();
-      verifierFinJeu();
-      afficherPendu(jeu.maxErreurs - jeu.tentatives);
-    }
-  });
-}

@@ -265,11 +265,20 @@
     font-size: 12px;
   }
   
-  #clavier-mobile {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
+  #saisie-lettre {
+    margin: 10px auto 20px auto;
+    display: block;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 18px;
+    text-align: center;
+    padding: 8px;
+    width: 60%;
+    max-width: 150px;
+    border: 2px solid green;
+    background-color: black;
+    color: #00ff00;
   }
+  
   
     /* -------------------- MEDIA QUERIES-------------------- */
 
