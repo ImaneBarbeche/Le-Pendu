@@ -324,6 +324,41 @@ h1 {
   margin-bottom: 20px;
 }
 
+#zone-jeu {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+#grille-lettres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px auto;
+  justify-content: center;
+  max-width: 200px;
+}
+
+.lettre-ratee {
+  width: 30px;
+  height: 30px;
+  border: 2px solid #00ff00;
+  color: #00ff00;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  box-shadow: 0 0 5px #00ff00;
+  opacity: 0.3;
+}
+
+#ligne-tentatives-restantes {
+  margin-top: 30px;
+}
 
 /* -------------------- MEDIA QUERIES-------------------- */
 
@@ -415,11 +450,7 @@ h1 {
     cursor: default;
   }
 
-  #ligne-lettres-utilisees {
+  #grille-lettres {
     display: none;
-  }
-
-  #ligne-tentatives-restantes {
-    margin-top: 30px;
   }
 }

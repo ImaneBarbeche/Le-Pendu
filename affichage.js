@@ -7,9 +7,18 @@ function mettreAJourMot() {
 function mettreAJourLettresRatees() {
   if (!jeu) return;
   const lettresRatees = jeu.getLettresRatees();
-  document.getElementById("lettres-utilisees").textContent =
-    lettresRatees.join(", ");
+  // Mise à jour visuelle
+  const grille = document.getElementById("grille-lettres");
+  grille.innerHTML = ""; // reset
+
+  lettresRatees.forEach((lettre) => {
+    const div = document.createElement("div");
+    div.className = "lettre-ratee";
+    div.textContent = lettre.toUpperCase();
+    grille.appendChild(div);
+  });
 }
+
 
 function afficherTentativesRestantes() {
   if (!jeu) return;
