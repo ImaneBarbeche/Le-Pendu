@@ -2,13 +2,18 @@
 
 let jeu;
 
+// Toujours cacher la popup au chargement
+const overlayFin = document.getElementById("overlay-fin");
+overlayFin.setAttribute("hidden", true);
+
+
 function initialiserJeu(mot) {
   jeu = new Pendu(mot);
   mettreAJourMot();
   mettreAJourLettresRatees();
   afficherTentativesRestantes();
   afficherPendu(0);
-  document.getElementById("message-fin").setAttribute("hidden", true);
+  overlayFin.setAttribute("hidden", true);
 }
 
 // Charger le mot au début
@@ -17,7 +22,7 @@ fetch("mots.json")
   .then((mots) => {
     const mot = mots[Math.floor(Math.random() * mots.length)];
     initialiserJeu(mot);
-    
+
     // Gestion du clavier mobile
     const champLettre = document.getElementById("saisie-lettre");
 
@@ -34,7 +39,7 @@ fetch("mots.json")
         afficherPendu(jeu.maxErreurs - jeu.tentatives);
       }
     });
-    
+
     document.addEventListener("keydown", (event) => {
       if (musiqueActive && fondSonore.paused) {
         fondSonore.play();
@@ -54,8 +59,8 @@ fetch("mots.json")
       afficherTentativesRestantes();
       verifierFinJeu();
       afficherPendu(jeu.maxErreurs - jeu.tentatives);
-
     });
+  });
 
     document.getElementById("btn-rejouer").addEventListener("click", () => {
       fetch("mots.json")
@@ -69,35 +74,28 @@ fetch("mots.json")
     document.getElementById("btn-abandonner").addEventListener("click", () => {
       jeu.finie = true;
       const message = "Vous avez abandonné le jeu !";
+      document.getElementById("titre-message").textContent = "ABANDON";
       document.getElementById("texte-message").textContent = message;
-      document.getElementById("message-fin").removeAttribute("hidden");
+      overlayFin.removeAttribute("hidden");
     });
-  });
 
-function mettreAJourMot() {
-  if (!jeu) return; // ← ne fait rien si jeu est undefined
-  const motAffiche = jeu.afficherMot();
-  document.getElementById("mot-affiche").textContent = motAffiche;
-}
-
-mettreAJourMot();
+  function mettreAJourMot() {
+    if (!jeu) return;
+    const motAffiche = jeu.afficherMot();
+    document.getElementById("mot-affiche").textContent = motAffiche;
+  }
 
 function mettreAJourLettresRatees() {
   if (!jeu) return;
   const lettresRatees = jeu.getLettresRatees();
-  document.getElementById("lettres-utilisees").textContent =
-    lettresRatees.join(", ");
+  document.getElementById("lettres-utilisees").textContent = lettresRatees.join(", ");
 }
-mettreAJourLettresRatees();
 
 function afficherTentativesRestantes() {
   if (!jeu) return;
   const tentatives = jeu.afficherTentatives();
-  document.getElementById(
-    "tentatives-restantes"
-  ).textContent = `Tentatives restantes : ${tentatives}`;
+  document.getElementById("tentatives-restantes").textContent = `Tentatives restantes : ${tentatives}`;
 }
-afficherTentativesRestantes();
 
 function verifierFinJeu() {
   if (jeu.estTermine()) {
@@ -110,8 +108,11 @@ function verifierFinJeu() {
       message = "Vous avez gagné !";
       sonWin.play();
     }
+
+    document.getElementById("titre-message").textContent = jeu.tentatives <= 0 ? "PERDU !" : "GAGNÉ !";
     document.getElementById("texte-message").textContent = message;
-    document.getElementById("message-fin").removeAttribute("hidden");
+    overlayFin.removeAttribute("hidden");
+
     mettreAJourMot();
     mettreAJourLettresRatees();
     afficherTentativesRestantes();
@@ -120,9 +121,7 @@ function verifierFinJeu() {
 
 function afficherPendu(erreurs) {
   const parties = document.querySelectorAll(".p-part");
-  console.log("Parties du pendu :", parties);
   for (let i = 0; i < parties.length; i++) {
-    console.log(`Partie ${i}: erreurs = ${erreurs}, visible = ${i < erreurs}`);
     if (i < erreurs) {
       parties[i].classList.add("visible");
     } else {
@@ -130,7 +129,10 @@ function afficherPendu(erreurs) {
     }
   }
 }
-// Interactions pour la pop-up des règles
+
+
+
+// Règles popup
 
 document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("btn-regles").addEventListener("click", () => {

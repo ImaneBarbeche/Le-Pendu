@@ -42,13 +42,15 @@
 
     <button id="btn-musique" type="button">🔊 Musique</button>
 
-    <section id="message-fin" hidden>
-      <!-- Message de victoire ou défaite -->
-      <p id="texte-message"></p>
-      <button id="btn-rejouer" type="button">Rejouer</button>
-      <button id="btn-abandonner" type="button">Abandonner</button>
-
-    </section>
+    <div id="overlay-fin" hidden>
+      <div id="popup-fin">
+        <h2 id="titre-message"></h2>
+        <p id="texte-message"></p>
+        <button id="btn-rejouer" type="button">Rejouer</button>
+        <button id="btn-abandonner" type="button">Abandonner</button>
+      </div>
+    </div>
+    
 
     <button id="btn-regles">
     <img src="assets/images/icon_regles.png" alt="Règles" width="24" class="icon_regles" />
