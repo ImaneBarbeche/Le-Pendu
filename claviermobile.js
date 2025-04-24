@@ -1,3 +1,10 @@
+document.addEventListener("DOMContentLoaded", () => {
+  if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+    document.body.classList.add("tactile");
+  }
+});
+
+
 function genererClavierVirtuel() {
   if (!document.getElementById("clavier-virtuel")) return;
 
@@ -52,4 +59,9 @@ function genererClavierVirtuel() {
     });
   }
   
+  
+  function estAppareilTactile() {
+    return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    
+  }
   

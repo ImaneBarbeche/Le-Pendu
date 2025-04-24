@@ -1,42 +1,39 @@
-# 🕹️ Jeu du Pendu — Version Rétro
+# 🕹️ Le Pendu — Jeu rétro en HTML/CSS/JavaScript
 
-Bienvenue dans ce projet 100% HTML/CSS/JS.
-Un petit jeu du pendu en mode **8-bit rétro**, ambiance terminal vert, avec sons et animations intégrés.
+Le Pendu est un jeu web inspiré du célèbre jeu de société. Le but est de deviner un mot en proposant des lettres, tout en évitant de se faire tuer !
+Le jeu est conçu avec une interface rétro qui rappelle les jeux des années 80.
+Le jeu possède une interface simple et intuitive, mais surtout responsive. Il est parfaitement adaptée pour les ordinateurs, tablettes et smartphones.
 
----
 
 ## 🔗 Démo en ligne
 
 👉 Voir le jeu sur https://imanebarbeche.github.io/Le-Pendu/
 
----
 
 ## 🎮 Fonctionnalités
 
-- 👾 Interface rétro façon terminal des années 80
-- ⌨️ Contrôle clavier uniquement (pas de clics !)
-- 🔊 Ambiance sonore (musique de fond, effets lettres)
-- 📖 Règles du jeu affichées via une pop-up
-- 🎉 Animation de victoire ou défaite
-- 🧠 Code organisé en POO (Programmation Orientée Objet)
 
----
+- Système de jeu basé sur la Programmation Orientée Objet (POO)
+
+- Sons intégrés : ambiance musicale, bonnes/mauvaises réponses, fin de partie
+
+- Thèmes de mots variés avec sélection en début de partie
+
+- Système de minuterie optionnel pour ajouter de la difficulté
+
+- Interface mobile avec clavier virtuel intégré
+
+- Animations de victoire et défaite
+
+- Popup d’aide (règles du jeu) et menu de sélection
+
 
 ## 🧰 Technologies
 
-- HTML5
-- CSS3
-- JavaScript
-
----
-
-## 🕹️ Comment jouer
-
-1. Le mot est généré aléatoirement.
-2. Tape des lettres depuis ton clavier.
-3. Chaque erreur fait apparaître une partie du pendu.
-4. Tu gagnes si tu devines le mot avant 8 erreurs !
-5. Tu peux **rejouer** ou **abandonner** à tout moment.
+- HTML5 : structure sémantique
+- CSS3 : mise en page, responsive, animations
+- JavaScript (Vanilla) : logique de jeu, interactions, DOM
+- POO : encapsulation de la logique dans une classe Pendu
 
 ---
 
@@ -45,3 +42,14 @@ Un petit jeu du pendu en mode **8-bit rétro**, ambiance terminal vert, avec son
 ```bash
 git clone https://github.com/ImaneBarbeche/Le-Pendu.git
 # Ouvre index.html dans ton navigateur
+
+## 📱 Compatibilité 
+
+- Fonctionne sur tous les navigateurs modernes
+- Optimisé pour mobile et desktop
+- Clavier virtuel activé automatiquement sur mobile
+
+# 📝 Auteure
+
+Imane Barbeche
+Projet réalisé dans le cadre de la formation Simplon.

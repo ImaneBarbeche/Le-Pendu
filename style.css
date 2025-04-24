@@ -15,6 +15,10 @@ body {
   font-size: 20px;
 }
 
+body.tactile #clavier-virtuel {
+  display: grid;
+}
+
 /* -------------------- CONTAINER -------------------- */
 #game-container {
   max-width: 600px;

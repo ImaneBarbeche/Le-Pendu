@@ -18,13 +18,15 @@ function initialiserJeu(mot, duree = 0) {
   overlayFin.setAttribute("hidden", true);
 
   // Génération du clavier virtuel uniquement sur mobile
-  if (window.innerWidth < 1024) {
+  if (estAppareilTactile()) {
     document.getElementById("clavier-virtuel").removeAttribute("hidden");
     genererClavierVirtuel();
     mettreAJourClavier();
+    document.getElementById("saisie-lettre").setAttribute("hidden", true);
   } else {
     document.getElementById("clavier-virtuel").setAttribute("hidden", true);
   }
+  
   // Afficher le timer si la durée est supérieure à 0
   if (duree > 0) {
     lancerTimer(duree);
