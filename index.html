@@ -7,6 +7,7 @@
   <script src="pendu.js" defer></script>
   <script src="game.js" defer></script>
   <script src="son.js" defer></script>
+  <script src="claviermobile.js" defer></script>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="/assets/images/fav_icon.png">
@@ -22,11 +23,14 @@
     <section id="mot-affiche">
       <!-- Exemple : _ _ _ _ -->
     </section>
-    <input id="saisie-lettre" type="text" maxlength="1" placeholder="Tape une lettre..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
 
+    <div id="clavier-virtuel" class="clavier" hidden>
+      <!-- Les lettres seront générées en JS -->
+    </div>
+    
     <section id="infos-jeu">
-      <p>Lettres utilisées : <span id="lettres-utilisees"></span></p>
-      <p><span id="tentatives-restantes"></span></p>
+      <p id="ligne-lettres-utilisees">Lettres utilisées : <span id="lettres-utilisees"></span></p>
+      <p id="ligne-tentatives-restantes"><span id="tentatives-restantes"></span></p>
     </section>
 
     <div id="pendaison">
