@@ -52,18 +52,15 @@ body {
   color: #00ff00;
   text-shadow: 1px 1px black;
   margin-bottom: 10px;
-  font-family: 'Press Start 2P', cursive;
 }
 
-
-
-/* -------------------- TITRE -------------------- */
 h1 {
   font-size: 40px;
   margin-bottom: 20px;
   text-shadow: 2px 2px 0 rgba(0, 255, 0, 0.5);
   color: #00ff00;
 }
+
 
 /* -------------------- MESSAGE FIN -------------------- */
 #message-fin {
@@ -102,7 +99,6 @@ h1 {
   padding: 30px;
   text-align: center;
   max-width: 90%;
-  font-family: 'Press Start 2P', cursive;
   color: #00ff00;
   box-shadow: 0 0 12px green;
 }
@@ -124,7 +120,6 @@ h1 {
   padding: 12px 24px;
   font-size: 14px;
   border-radius: 8px;
-  font-family: "Press Start 2P", cursive;
   transition: transform 0.2s ease;
 }
 
@@ -132,39 +127,84 @@ h1 {
   transform: scale(1.1);
 }
 
-#btn-rejouer, #btn-abandonner {
+#btn-rejouer, #btn-abandonner, #popup-fin button {
   background-color: green;
   color: black;
   border: none;
-  font-size: 20px;
+  font-size: 14px;
   cursor: pointer;
   border-radius: 5px;
   padding: 10px 20px;
   transition: background-color 0.3s ease;
 }
 
-#btn-rejouer:hover {
+#btn-rejouer:hover,
+#btn-rejouer:active, #popup-fin button:hover {
   background-color: #00cc00;
 }
 
-#btn-rejouer:active {
-  background-color: #009900;
-}
 
-#popup-fin button {
-  background-color: green;
-  color: black;
-  border: none;
-  padding: 10px 20px;
-  font-family: 'Press Start 2P', cursive;
-  font-size: 14px;
-  margin: 10px;
+#btn-musique {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: black;
+  color: #00ff00;
+  border: 1px solid green;
+  padding: 10px;
   cursor: pointer;
+  font-size: 14px;
 }
 
-#popup-fin button:hover {
-  background-color: #00cc00;
+#btn-regles {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: black;
+  color: #00ff00;
+  border: 1px solid green;
+  padding: 10px 16px;
+  font-size: 12px;
+  cursor: pointer;
+  margin-top: 20px;
 }
+
+#btn-regles:hover {
+  box-shadow: 0 0 5px #00ff00;
+}
+
+#btn-jouer {
+  margin-top: 20px;
+  padding: 12px 24px;
+  font-size: 14px;
+  border: 2px solid #00ff00;
+  background-color: black;
+  color: #00ff00;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#btn-jouer:hover {
+  background-color: #00ff00;
+  color: black;
+}
+
+.liste-options button {
+  background-color: black;
+  color: #00ff00;
+  border: 2px solid #00ff00;
+  padding: 10px 16px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.liste-options button:hover,
+.liste-options button.selected {
+  background-color: #00ff00;
+  color: black;
+}
+
 
 /* -------------------- PENDU -------------------- */
 #pendaison {
@@ -190,108 +230,21 @@ h1 {
 }
 
 /* --- Éléments du bonhomme --- */
-.barre {
-  width: 100px;
-  height: 5px;
-  top: 0;
-  left: 50px;
-}
-
-.corde {
-  width: 5px;
-  height: 40px;
-  top: 5px;
-  left: 95px;
-}
-
-.tete {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  top: 45px;
-  left: 85px;
-}
-
-.corps {
-  width: 5px;
-  height: 50px;
-  top: 75px;
-  left: 97px;
-}
-
-.bras-gauche {
-  width: 5px;
-  height: 30px;
-  top: 75px;
-  left: 82px;
-  transform: rotate(20deg); /* bras tombant légèrement */
-}
-
-.bras-droit {
-  width: 5px;
-  height: 30px;
-  top: 75px;
-  left: 108px;
-  transform: rotate(-20deg);
-}
-
-.jambe-gauche {
-  width: 5px;
-  height: 30px;
-  top: 125px;
-  left: 90px;
-  transform: rotate(5deg); /* jambe tombante */
-}
-
-.jambe-droite {
-  width: 5px;
-  height: 30px;
-  top: 125px;
-  left: 104px;
-  transform: rotate(-5deg);
-}
+.barre { width: 100px; height: 5px; top: 0; left: 50px; }
+.corde { width: 5px; height: 40px; top: 5px; left: 95px; }
+.tete { width: 30px; height: 30px; border-radius: 50%; top: 45px; left: 85px; }
+.corps { width: 5px; height: 50px; top: 75px; left: 97px; }
+.bras-gauche { width: 5px; height: 30px; top: 75px; left: 82px; transform: rotate(20deg); }
+.bras-droit { width: 5px; height: 30px; top: 75px; left: 108px; transform: rotate(-20deg); }
+.jambe-gauche { width: 5px; height: 30px; top: 125px; left: 90px; transform: rotate(5deg); }
+.jambe-droite { width: 5px; height: 30px; top: 125px; left: 104px; transform: rotate(-5deg); }
 
 /* -------------------- ANIMATIONS -------------------- */
 @keyframes blink {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.2;
-  }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
 }
-
-#btn-musique {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background-color: black;
-  color: #00ff00;
-  border: 1px solid green;
-  padding: 10px;
-  font-family: "Press Start 2P", cursive;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-#btn-regles {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background-color: black;
-  color: #00ff00;
-  border: 1px solid green;
-  padding: 10px 16px;
-  font-family: "Press Start 2P", cursive;
-  font-size: 12px;
-  cursor: pointer;
-  margin-top: 20px;
-}
-
-#btn-regles:hover {
-  box-shadow: 0 0 5px #00ff00;
-}
+/* -------------------- POPUP REGLES -------------------- */
 
 .icone-regles {
   width: 20px;
@@ -309,7 +262,6 @@ h1 {
   z-index: 100;
   width: 400px;
   color: #00ff00;
-  font-family: "Press Start 2P", cursive;
   box-shadow: 0 0 10px green;
 }
 
@@ -317,7 +269,7 @@ h1 {
   text-align: left;
   padding-left: 20px;
   font-size: 12px;
-  line-height: 1.8; /* augmente l'espacement entre les lignes */
+  line-height: 1.8;
   margin-top: 10px;
 }
 
@@ -327,7 +279,6 @@ h1 {
   color: black;
   padding: 8px 16px;
   border: none;
-  font-family: "Press Start 2P", cursive;
   cursor: pointer;
   font-size: 12px;
 }
@@ -336,7 +287,7 @@ h1 {
   display: none;
 }
 
-/* === POPUP DE SÉLECTION === */
+/* -------------------- POPUP DE SELECTION -------------------- */
 .popup-overlay {
   position: fixed;
   top: 0;
@@ -358,7 +309,6 @@ h1 {
   max-width: 500px;
   text-align: center;
   color: #00ff00;
-  font-family: 'Press Start 2P', cursive;
   box-shadow: 0 0 15px #00ff00;
   border-radius: 8px;
 }
@@ -376,41 +326,6 @@ h1 {
   justify-content: center;
   margin-bottom: 20px;
 }
-
-.liste-options button {
-  background-color: black;
-  color: #00ff00;
-  border: 2px solid #00ff00;
-  padding: 10px 16px;
-  font-size: 12px;
-  font-family: 'Press Start 2P', cursive;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.liste-options button:hover,
-.liste-options button.selected {
-  background-color: #00ff00;
-  color: black;
-}
-
-#btn-jouer {
-  margin-top: 20px;
-  padding: 12px 24px;
-  font-size: 14px;
-  border: 2px solid #00ff00;
-  background-color: black;
-  color: #00ff00;
-  font-family: 'Press Start 2P', cursive;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-#btn-jouer:hover {
-  background-color: #00ff00;
-  color: black;
-}
-
 
 
 /* -------------------- MEDIA QUERIES-------------------- */
@@ -434,6 +349,7 @@ h1 {
 
   h1 {
     font-size: 24px;
+    margin-bottom: 10px;
   }
 
   #pendaison {
@@ -462,10 +378,6 @@ h1 {
     position: static; /* important si tu l'avais positionné en absolu */
   }
 
-  h1 {
-    margin-bottom: 10px;
-  }
-
   #message-fin {
     font-size: 10px;
   }
@@ -483,26 +395,10 @@ h1 {
     justify-content: center;
   }
   
-  .touche-clavier {
-    padding: 10px;
-    background: black;
-    color: #00ff00;
-    border: 2px solid green;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 12px;
-    cursor: pointer;
-    border-radius: 4px;
-  }
-  
-  .touche-clavier.utilisee {
-    opacity: 0.3;
-    cursor: default;
-  }
-
   #clavier-virtuel {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 6px;
+    gap: 10px;
     justify-content: center;
     margin-top: 20px;
     padding: 10px;
@@ -515,7 +411,6 @@ h1 {
     border: 2px solid #00ff00;
     color: #00ff00;
     border-radius: 5px;
-    font-family: 'Press Start 2P', cursive;
   }
 
   .touche-clavier.utilisee {
