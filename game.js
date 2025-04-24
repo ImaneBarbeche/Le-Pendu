@@ -32,6 +32,12 @@ fetch("mots.json")
 
       if (/^[a-z]$/.test(lettre) && !jeu.finie) {
         const resultat = jeu.verifierLettre(lettre);
+
+        if (resultat === "bonne_tentative") {
+          sonGoodLetter.play();
+        } else if (resultat === "mauvaise_tentative") {
+          sonWrongLetter.play();
+        }
         mettreAJourMot();
         mettreAJourLettresRatees();
         afficherTentativesRestantes();
