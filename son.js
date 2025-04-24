@@ -1,12 +1,20 @@
-const sonBip = new Audio("assets/sounds/mauvaise_lettre.mp3");
-const sonWin = new Audio("assets/sounds/bonne_lettre.mp3");
+const sonWrongLetter = new Audio("assets/sounds/mauvaise_lettre.mp3");
+sonWrongLetter.volume = 0.5; // Volume de la lettre incorrecte
+
+const sonGoodLetter = new Audio("assets/sounds/bonne_lettre.mp3");
+sonGoodLetter.volume = 0.5; // Volume de la lettre correcte
 const sonLose = new Audio("assets/sounds/gameover.mp3");
+sonLose.volume = 0.5; // Volume du gameover
+
+const sonWin = new Audio("assets/sounds/victoire.mp3");
+sonWin.volume = 0.5; // Volume de la victoire
+
 
 let musiqueActive = true;
 
 const fondSonore = new Audio("assets/sounds/ambiance.mp3");
 fondSonore.loop = true;
-fondSonore.volume = 0.1; // Volume de fond sonore
+fondSonore.volume = 0.2; // Volume de fond sonore
 
 
 const boutonMusique = document.getElementById("btn-musique");

@@ -50,7 +50,9 @@ fetch("mots.json")
         return; // Ne rien faire si le jeu est déjà terminé
       const resultat = jeu.verifierLettre(lettre);
       if (resultat === "mauvaise_tentative") {
-        sonBip.play();
+        sonWrongLetter.play();
+      } else if (resultat === "bonne_tentative") {
+        sonGoodLetter.play();
       }
       console.log(`Lettre ${lettre} : ${resultat}`);
       // Mettre à jour l'affichage du mot, des lettres ratées et des tentatives restantes
