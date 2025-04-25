@@ -81,8 +81,9 @@ class Pendu {
     this.finie = false; // réinitialiser l'état du jeu
   }
     // Permet d'afficher le mot à la fin en cas de défaite
-    getMot() {
-      return this.#mot;
+    revelerMot() {
+      return this.finie ? this.#mot : null; // retourne le mot si le jeu est terminé, sinon null
     }
+    
 }
 

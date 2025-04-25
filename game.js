@@ -51,7 +51,7 @@ function verifierFinJeu() {
   // Détermine le message et joue le bon son
   const perdu = jeu.tentatives <= 0;
   const message = perdu
-    ? `Vous avez perdu ! Le mot était : "${jeu.getMot().toUpperCase()}"`
+    ? `Vous avez perdu ! Le mot était : "${jeu.revelerMot().toUpperCase()}"`
     : "Vous avez gagné !";
 
   document.getElementById("titre-message").textContent = perdu

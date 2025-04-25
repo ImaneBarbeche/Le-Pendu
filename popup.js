@@ -108,7 +108,7 @@ function lancerTimer(duree) {
 
       // Affiche le game over
       document.getElementById("titre-message").textContent = "TEMPS ÉCOULÉ !";
-      document.getElementById("texte-message").textContent = `Le mot était : "${jeu.getMot().toUpperCase()}"`;
+      document.getElementById("texte-message").textContent = `Le mot était : "${jeu.revelerMot().toUpperCase()}"`;
       document.getElementById("overlay-fin").removeAttribute("hidden");
       sonLose.play();
     }
