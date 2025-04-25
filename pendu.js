@@ -1,66 +1,82 @@
-class Pendu {
+// ==========================
+// CLASSE PRINCIPALE DU JEU
+// ==========================
 
+class Pendu {
   constructor(mot) {
-    this.mot = mot.toLowerCase();
-    this.maxErreurs = 8; // Nombre maximum d'erreurs autorisées
-    this.tentatives = this.maxErreurs;
-    this.lettresTrouvees = new Set();
-    this.lettresRatees = new Set();
-    this.finie = false;
+    this.mot = mot.toLowerCase();        // Le mot à deviner
+    this.maxErreurs = 8;                 // Nombre max d’erreurs possibles
+    this.tentatives = this.maxErreurs;   // Tentatives restantes
+    this.lettresTrouvees = new Set();    // Lettres correctement devinées
+    this.lettresRatees = new Set();      // Lettres incorrectes
+    this.finie = false;                  // État du jeu (fini ou non)
   }
-  // Méthode pour vérifier si une lettre est dans le mot
-  verifierLettre(lettre) {
+
+    /**
+   * Vérifie si la lettre est correcte, incorrecte ou déjà tentée
+   */
+   verifierLettre(lettre) {
     if (this.lettresTrouvees.has(lettre) || this.lettresRatees.has(lettre)) {
       return "deja_tentee";
-    } else if (this.mot.includes(lettre)) {
+    }
+
+    if (this.mot.includes(lettre)) {
       this.lettresTrouvees.add(lettre);
       return "bonne_tentative";
     } else {
       this.lettresRatees.add(lettre);
       this.tentatives--;
       return "mauvaise_tentative";
-      
     }
   }
-  // Méthode pour afficher le mot avec les lettres trouvées
-  afficherMot() {
-    let motAffiche = "";
-    for (let lettre of this.mot) {
-      if (this.lettresTrouvees.has(lettre)) {
-        motAffiche += lettre + " ";
-      } else {
-        motAffiche += "_ ";
-      }
-    }
-    return motAffiche.trim();
+   /**
+   * Retourne le mot à afficher, avec les lettres trouvées et des "_" pour le reste
+   */
+   afficherMot() {
+    return this.mot
+      .split("") // découpe le mot en lettres individuelles
+      .map((lettre) => (this.lettresTrouvees.has(lettre) ? lettre : "_")) // on parcours chaque lettre et on affiche soit la lettre soit un "_" si elle n'est pas trouvée
+      .join(" "); // On rassemble le tableau obtenu, avec un espace entre chaque lettre
   }
-  // Méthode pour afficher les lettres ratées
+  
+  /**
+   * Retourne les lettres incorrectes sous forme de tableau
+   */
   getLettresRatees() {
     return [...this.lettresRatees];
   }
 
-  // Méthode pour vérifier si le jeu est terminé
-  estTermine() {
-    return (
-      this.tentatives <= 0 ||
-      this.mot.split("").every((lettre) => this.lettresTrouvees.has(lettre))
-    );
+   /**
+   * Détermine si le jeu est terminé (gagné ou perdu)
+   */
+   estTermine() {
+    const motComplet = this.mot.split("").every((lettre) => this.lettresTrouvees.has(lettre)); // découpe le mot en lettres et vérifie si toutes les lettres sont trouvées
+    return this.tentatives <= 0 || motComplet; // le jeu est terminé si le nombre de tentatives est épuisé ou si le mot est complètement trouvé
   }
-  // Méthode pour afficher le nombre de tentatives restantes
-  afficherTentatives() {
+
+   /**
+   * Retourne le nombre de tentatives restantes
+   */
+   afficherTentatives() {
     return this.tentatives;
   }
-    // Méthode pour afficher le nombre d'erreurs restantes
+
+   /**
+   * Retourne le nombre d'erreurs effectuées
+   */
   getErreurs() {
     return this.maxErreurs - this.tentatives;
   }
   
-  reinitialiserJeu() {
-    this.mot = this.mot = mot.toLowerCase();
-    this.tentatives = this.maxErreurs; 
-    this.lettresTrouvees = new Set();
-    this.lettresRatees = new Set();
-    this.finie = false;
+  /**
+   * Réinitialise l'objet pour relancer une partie (si jamais on en a besoin)
+   * 
+   */
+  reinitialiserJeu(nouveauMot) { // Réinitialiser le jeu avec un nouveau mot
+    this.mot = nouveauMot.toLowerCase(); // passer le nouveau mot
+    this.tentatives = this.maxErreurs; // réinitialiser le nombre de tentatives
+    this.lettresTrouvees = new Set(); // réinitialiser les lettres trouvées
+    this.lettresRatees = new Set(); // réinitialiser les lettres ratées
+    this.finie = false; // réinitialiser l'état du jeu
   }
-  
 }

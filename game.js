@@ -1,59 +1,72 @@
-// logique de jeu
+// ==========================
+// LOGIQUE DU JEU PRINCIPALE
+// ==========================
 
-let jeu;
+let jeu; // variable globale contenant l'instance de Pendu
 
-// Toujours cacher la popup au chargement
+// Cache la popup de fin dès le début
 const overlayFin = document.getElementById("overlay-fin");
 overlayFin.setAttribute("hidden", true);
 
+// Initialise une nouvelle partie avec un mot et une durée (optionnelle)
 function initialiserJeu(mot, duree = 0) {
   clearInterval(timerInterval); // on arrête tout ancien timer
   document.getElementById("affichage-timer").setAttribute("hidden", true);
 
+  // Nouvelle instance de Pendu
   jeu = new Pendu(mot);
+
+  // MàJ de l'affichage initial
   mettreAJourMot();
   mettreAJourLettresRatees();
   afficherTentativesRestantes();
   afficherPendu(0);
+
   overlayFin.setAttribute("hidden", true);
 
-  // Génération du clavier virtuel uniquement sur mobile
+  // Affiche ou non le clavier virtuel selon le type d'appareil
+  const clavierVirtuel = document.getElementById("clavier-virtuel");
   if (estAppareilTactile()) {
-    document.getElementById("clavier-virtuel").removeAttribute("hidden");
+    clavierVirtuel.removeAttribute("hidden");
     genererClavierVirtuel();
     mettreAJourClavier();
-    document.getElementById("saisie-lettre").setAttribute("hidden", true);
   } else {
-    document.getElementById("clavier-virtuel").setAttribute("hidden", true);
+    clavierVirtuel.setAttribute("hidden", true);
   }
-  
-  // Afficher le timer si la durée est supérieure à 0
+
+  // Si un timer est défini, le lancer
   if (duree > 0) {
     lancerTimer(duree);
   }
 }
 
+/**
+ * Vérifie si le jeu est terminé (victoire ou défaite) et affiche le résultat
+ */
 function verifierFinJeu() {
-  if (jeu.estTermine()) {
-    jeu.finie = true;
-    let message = "";
-    if (jeu.tentatives <= 0) {
-      message = `Vous avez perdu ! Le mot était : "${jeu.mot.toUpperCase()}"`;
-      sonLose.play();
-    } else {
-      message = "Vous avez gagné !";
-      sonWin.play();
-    }
+  if (!jeu.estTermine()) return;
 
-    document.getElementById("titre-message").textContent =
-      jeu.tentatives <= 0 ? "PERDU !" : "GAGNÉ !";
-    document.getElementById("texte-message").textContent = message;
-    overlayFin.removeAttribute("hidden");
+  jeu.finie = true;
 
-    mettreAJourMot();
-    mettreAJourLettresRatees();
-    afficherTentativesRestantes();
-    clearInterval(timerInterval);
-    document.getElementById("affichage-timer").setAttribute("hidden", true);
-  }
+  // Détermine le message et joue le bon son
+  const perdu = jeu.tentatives <= 0;
+  const message = perdu
+    ? `Vous avez perdu ! Le mot était : "${jeu.mot.toUpperCase()}"`
+    : "Vous avez gagné !";
+
+  document.getElementById("titre-message").textContent = perdu
+    ? "PERDU !"
+    : "GAGNÉ !";
+  document.getElementById("texte-message").textContent = message;
+  overlayFin.removeAttribute("hidden");
+
+  perdu ? sonLose.play() : sonWin.play(); // Joue le son de victoire ou de défaite
+
+  // Mise à jour finale de l'état visuel
+  mettreAJourMot();
+  mettreAJourLettresRatees();
+  afficherTentativesRestantes();
+  clearInterval(timerInterval);
+  document.getElementById("affichage-timer").setAttribute("hidden", true);
+
 }
