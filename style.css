@@ -108,12 +108,12 @@ h1 {
 }
 
 #popup-fin h2 {
-  font-size: 24px;
+  font-size: 22px;
   margin-bottom: 20px;
 }
 
 #popup-fin p {
-  font-size: 16px;
+  font-size: 14px;
   margin-bottom: 20px;
 }
 
@@ -135,7 +135,7 @@ h1 {
   background-color: green;
   color: black;
   border: none;
-  font-size: 14px;
+  font-size: 12px;
   cursor: pointer;
   border-radius: 5px;
   padding: 10px 20px;
@@ -366,7 +366,7 @@ h1 {
 
 /* -------------------- MEDIA QUERIES-------------------- */
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1500px) {
 
   body {
     font-size: 12px;
