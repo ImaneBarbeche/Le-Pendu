@@ -40,12 +40,12 @@
 
         <h2>Choisis un chrono</h2>
         <div id="liste-chronos" class="liste-options">
-          <button class="choix-chrono" data-temps="0">Relax (∞)</button>
-          <button class="choix-chrono" data-temps="60">Classique (60s)</button>
-          <button class="choix-chrono" data-temps="30">Hardcore (30s)</button>
+          <button class="choix-chrono" data-temps="0" type="button">Relax (∞)</button>
+          <button class="choix-chrono" data-temps="60" type="button">Classique (60s)</button>
+          <button class="choix-chrono" data-temps="30" type="button">Hardcore (30s)</button>
         </div>
 
-        <button id="btn-jouer">Jouer</button>
+        <button id="btn-jouer" type="button">Jouer</button>
       </div>
     </div>
 
@@ -90,12 +90,13 @@
         <div id="popup-fin">
           <h2 id="titre-message"></h2>
           <p id="texte-message"></p>
-          <button id="btn-rejouer" type="button">Rejouer</button>
+          <button id="btn-rejouer" type="button">Rejouer sur le même thème</button>
           <button id="btn-abandonner" type="button">Abandonner</button>
+          <button id="btn-choisir-theme" type="button">Choisir un autre thème</button>
         </div>
       </div>
 
-      <button id="btn-regles">
+      <button id="btn-regles" type="button">
         <img
           src="assets/images/icon_regles.png"
           alt="Règles"
@@ -103,6 +104,14 @@
           class="icon_regles"
         />
         Règles
+      </button>
+      <button id="btn-changer-theme" type="button">
+        <img
+          src="assets/images/changer_theme.png"
+          alt="Règles"
+          width="24"
+          class="icon_regles"
+        /> Choisir un autre thème 
       </button>
 
       <div id="popup-regles" hidden>
@@ -115,7 +124,7 @@
             <li>Vous avez 8 erreurs max.</li>
             <li>Vous gagnez si vous devinez le mot à temps !</li>
           </ul>
-          <button id="fermer-regles">Fermer</button>
+          <button id="fermer-regles" type="button">Fermer</button>
         </div>
       </div>
     </main>

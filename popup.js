@@ -68,6 +68,8 @@ document.getElementById("btn-jouer").addEventListener("click", () => {
 
       // Cache la pop-up de départ
       document.getElementById("popup-choix").style.display = "none";
+      document.getElementById("game-container").style.display = "block"; // Afficher le jeu
+
     });
 });
 

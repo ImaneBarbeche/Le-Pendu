@@ -51,7 +51,7 @@ document.getElementById("btn-rejouer").addEventListener("click", () => {
 });
 
 // Bouton "Abandonner" — met fin à la partie
-document.getElementById("btn-abandonner").addEventListener("click", () => {
+document.getElementById("btn-abandonner").addEventListener("click", () => { 
   clearInterval(timerInterval); // stoppe le chrono s'il est actif
   jeu.finie = true;
 
@@ -59,4 +59,25 @@ document.getElementById("btn-abandonner").addEventListener("click", () => {
   document.getElementById("titre-message").textContent = "ABANDON";
   document.getElementById("texte-message").textContent = message;
   overlayFin.removeAttribute("hidden"); // affiche la pop-up de fin
+
+  // Ferme la popup après 5 secondes
+  setTimeout(() => {
+    overlayFin.setAttribute("hidden", "true");
+  }, 5000);
+  
+});
+
+// Bouton "Changer de thème" pendant la partie
+document.getElementById("btn-changer-theme").addEventListener("click", () => {
+  document.getElementById("popup-choix").style.display = "flex"; // Montre la popup
+  document.getElementById("game-container").style.display = "none"; // Cache le jeu
+  themeChoisi = null; // Reset du thème pour forcer l'utilisateur à choisir un nouveau
+});
+
+// Bouton "Changer de thème" depuis la popup de fin
+document.getElementById("btn-choisir-theme").addEventListener("click", () => {
+  document.getElementById("popup-choix").style.display = "flex"; // Montre la popup
+  document.getElementById("game-container").style.display = "none"; // Cache le jeu
+  overlayFin.setAttribute("hidden", "true"); // Cache la popup de fin
+  themeChoisi = null; // Reset du thème
 });

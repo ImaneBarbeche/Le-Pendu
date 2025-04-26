@@ -52,6 +52,16 @@ git clone "https://github.com/ImaneBarbeche/Le-Pendu.git"
 - Optimisé pour mobile et desktop
 - Clavier virtuel activé automatiquement sur mobile
 
+## 🔐 Sécurité & Anti-triche
+
+- Le mot à deviner est stocké en privé dans la classe Pendu (#mot), rendant son accès impossible via la console ou des outils de débogage.
+
+- Une méthode contrôlée (révélerMot()) est utilisée uniquement pour afficher le mot en cas de défaite, sans exposer directement la variable interne.
+
+- Toute tentative d'accès via jeu.mot ou jeu.#mot depuis la console retournera une erreur ou sera inaccessible.
+
+- Le code a été testé sur différents navigateurs et appareils pour éviter toute forme de triche basique via l’inspecteur.
+
 # 📝 Auteure
 
 Imane Barbeche
