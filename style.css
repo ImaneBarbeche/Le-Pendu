@@ -175,9 +175,10 @@ h1 {
   margin-top: 20px;
 }
 
-#btn-regles:hover {
+#btn-regles:hover, #btn-changer-theme:hover, #btn-musique:hover {
   box-shadow: 0 0 5px #00ff00;
 }
+
 
 #btn-jouer {
   margin-top: 20px;
@@ -231,6 +232,8 @@ h1 {
   margin-top: 20px;
   padding: 0 10px; /* Un peu d'air à gauche et à droite */
 }
+
+
 /* -------------------- PENDU -------------------- */
 #pendaison {
   width: 200px;
