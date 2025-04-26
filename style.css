@@ -223,6 +223,14 @@ h1 {
     cursor: pointer;
     margin-top: 20px;
 }
+
+#zone-boutons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding: 0 10px; /* Un peu d'air à gauche et à droite */
+}
 /* -------------------- PENDU -------------------- */
 #pendaison {
   width: 200px;
@@ -387,6 +395,13 @@ h1 {
     font-size: 12px;
   }
 
+  #zone-boutons {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+  }
+  
   #game-container {
     padding: 10px;
     width: 95%;
