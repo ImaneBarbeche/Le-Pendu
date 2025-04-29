@@ -29,6 +29,12 @@ body.tactile #clavier-virtuel {
   background-color: rgba(0, 0, 0, 0.7);
 }
 
+#game-container {
+  margin-top: 20px;
+}
+#game-container h1 {
+  margin-top: 10px;
+}
 #game-container p,
 #game-container section,
 #message-fin {
@@ -38,11 +44,12 @@ body.tactile #clavier-virtuel {
 #mot-affiche {
   font-size: 18px;
   margin-bottom: 30px;
+  margin-top: 30px;
   text-shadow: 2px 2px 0 rgba(0, 255, 0, 0.5);
   color: #00ff00;
   letter-spacing: 5px;
   text-transform: uppercase;
- line-height: 2;
+  line-height: 2;
 }
 
 #infos-jeu {
