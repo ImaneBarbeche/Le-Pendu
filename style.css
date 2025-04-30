@@ -399,7 +399,7 @@ h1 {
 
 /* -------------------- MEDIA QUERIES-------------------- */
 
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: 1024px) {
 
   body {
     font-size: 12px;
