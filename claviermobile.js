@@ -2,11 +2,11 @@
 // Si oui, on ajoute une classe "tactile" au body pour adapter l'affichage via le CSS
 function mettreAJourModeTactile() {
   const estTactile = estAppareilTactile();
-  const body = document.body;
+  const body = document.body; // récupère l'élément body
 
   if (estTactile) {
-    body.classList.add("tactile");
-    genererClavierVirtuel(); // Ajoute le clavier
+    body.classList.add("tactile"); // on ajoute une classe css 
+    genererClavierVirtuel(); // Appel le clavier
   } else {
     body.classList.remove("tactile");
     const clavier = document.getElementById("clavier-virtuel");
