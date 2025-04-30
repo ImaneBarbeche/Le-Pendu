@@ -15,10 +15,9 @@ body {
   font-size: 20px;
 }
 
-body.tactile #clavier-virtuel {
-  display: grid;
+#clavier-virtuel {
+  display: none;
 }
-
 /* -------------------- CONTAINER -------------------- */
 #game-container {
   max-width: 600px;
@@ -502,4 +501,28 @@ h1 {
   #grille-lettres {
     display: none;
   }
+
+  body.tactile #clavier-virtuel {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 10px;
+  }
+
+  body.tactile .touche-clavier {
+    font-size: 12px;
+    padding: 10px 0;
+    background-color: #000;
+    border: 2px solid #00ff00;
+    color: #00ff00;
+    border-radius: 5px;
+  }
+
+  body.tactile .touche-clavier.utilisee {
+    opacity: 0.3;
+    cursor: default;
+  }
+
 }

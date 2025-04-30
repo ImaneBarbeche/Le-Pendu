@@ -1,10 +1,23 @@
 // Dès que la page est chargée, on vérifie si l'utilisateur est sur un appareil tactile
 // Si oui, on ajoute une classe "tactile" au body pour adapter l'affichage via le CSS
-document.addEventListener("DOMContentLoaded", () => {
-  if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
-    document.body.classList.add("tactile");
+function mettreAJourModeTactile() {
+  const estTactile = estAppareilTactile();
+  const body = document.body;
+
+  if (estTactile) {
+    body.classList.add("tactile");
+    genererClavierVirtuel(); // Ajoute le clavier
+  } else {
+    body.classList.remove("tactile");
+    const clavier = document.getElementById("clavier-virtuel");
+    if (clavier) clavier.innerHTML = ""; // Supprime le clavier
   }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  mettreAJourModeTactile();
 });
+
 
 
 // Génère le clavier virtuel (boutons A-Z) pour les appareils tactiles
@@ -72,3 +85,11 @@ function estAppareilTactile() {
   return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 }
   
+// Mise à jour en cas de redimensionnement (simulateur, rotation, etc.)
+let resizeTimer;
+window.addEventListener("resize", () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => {
+    mettreAJourModeTactile();
+  }, 200);
+});
